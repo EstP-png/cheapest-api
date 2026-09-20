@@ -12,37 +12,37 @@ load:
   # =============================================================
 
   # --- Dimensiones del negocio ---
-  tiendas: 5          # placeholder — ¿cuántas tiendas modela su ciudad?
-  zonas: 3            # placeholder — ¿cuántas zonas y cuál es la "cabeza"?
+  tiendas: 3000          # El enunciado indica que esta es la cantidad de tiendas activas al momento
+  zonas: 200            # 15 tiendas por zona aproximadamente, un promedio razonable teniendo en cuenta zonas de alta y baja ctividad comercial
 
   # Distribución de la actividad sobre tiendas/zonas/productos.
   # Sin esta llave el seeder reparte todo de forma uniforme (round-robin).
   # Descoméntela y ajústela para modelar la concentración real:
-  # distribucion:
-  #   tipo: pareto
-  #   peso_cabeza: 0.8       # fracción de la actividad que cae en la cabeza
-  #   fraccion_cabeza: 0.2   # tamaño de la cabeza respecto del pool
+  distribucion:
+    tipo: pareto
+    peso_cabeza: 0.8      # fracción de la actividad que cae en la cabeza
+    fraccion_cabeza: 0.1   # tamaño de la cabeza respecto del pool
   # Para 200 pedidos
   # el 80% de actividad (160 pedidos) van a asignarse a Tienda "cabeza" 
   # el 20% de actividad (40 pedidos) van a asignarse a Tiendas "cola"
 
   # --- Logística ---  (placeholders — ajuste cada conteo y su razón)
-  productos: 100
-  catalogos: 10
-  catalogos_productos: 200
-  promociones: 20
-  pedidos: 200
-  items_pedido: 400
-  despachos: 100
-  disponibilidad_zona: 200
-  notas_credito: 20
+  productos: 33000 #Wallmart ofrece alrededor de 120.000 prodictos, se quitan 5/7 debido a productos de ropa, tecnología, hogar y deportes que no se encontrarían en una tienda de barrio
+  catalogos: 30 # ~10 productos por catálogo
+  catalogos_productos: 60000
+  promociones: 500
+  pedidos: 150000 # Asumiendo que cada tienda ha realizado 50 pedidos en promedio
+  items_pedido: 450000 # 3 veces las cantidades de pedidos, pues se asume que la tienda vende en promedio 3 productos por compra
+  despachos: 150000 #Un despacho por pedido
+  disponibilidad_zona: 1000 
+  notas_credito: 1000 # Aprox 1% de los pedidos requieren devolucion
 
   # --- Inventario ---
-  items_inventario: 100
-  registros_compra_producto_tienda: 100
-  registros_venta_producto_tienda: 100
+  items_inventario: 300000 # 100 productos por cada tienda
+  registros_compra_producto_tienda: 150000 #50 compras por tienda 
+  registros_venta_producto_tienda: 140000 # Ligeramente menor a las compras debio a que no se vende todo el inventario
 
   # --- Ventas ---
-  productos_externos: 30
-  ventas: 100
-  items_venta: 200
+  productos_externos: 1000
+  ventas: 140000
+  items_venta: 420000 # ya que sn aproximadamente 3 productos por venta
